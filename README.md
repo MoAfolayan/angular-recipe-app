@@ -4,6 +4,9 @@ An app for displaying and editing a list of recipes
 - Design
   - Angular front-end
   - back-end is recipe-app-backend repo
+  
+  
+# Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
 

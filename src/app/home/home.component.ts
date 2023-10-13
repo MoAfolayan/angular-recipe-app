@@ -18,10 +18,10 @@ import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.
 })
 export class HomeComponent implements OnInit {
 
-    user$: Observable<IUser>;
-    userRecipes$: Observable<Observable<IRecipe[]>>;
-    selectedRecipe: IRecipe;
-    recipesToDelete: IRecipe[];
+    user$: Observable<IUser> = {} as Observable<IUser>;
+    userRecipes$: Observable<IRecipe[]> = {} as Observable<IRecipe[]>;
+    selectedRecipe: IRecipe = {} as IRecipe;
+    recipesToDelete: IRecipe[] = [];
 
     constructor(
         public auth0Service: AuthService,
@@ -50,16 +50,18 @@ export class HomeComponent implements OnInit {
                     if (user.id) {
                         console.log(`user id: `, user.id)
                         return this.recipeService.getUserRecipes(user.id);
+                    } else {
+                        return null;
                     }
                 })
             )
     }
 
-    displaySelectedRecipe(event): void {
+    displaySelectedRecipe(event: any): void {
         this.selectedRecipe = event;
     }
 
-    deleteRecipes(event): void {
+    deleteRecipes(event: any): void {
         console.log(`delete multiple recipes: `, event);
 
         if (event.length < 1) {
@@ -91,13 +93,13 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    editRecipe(event): void {
+    editRecipe(event: any): void {
         if (event) {
             // edit selectedRecipe
         }
     }
 
-    deleteRecipe(event): void {
+    deleteRecipe(event: any): void {
         console.log(`deleting recipe: `, event);
 
         if (event) {

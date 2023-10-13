@@ -9,7 +9,7 @@ import { IRecipe } from '../../recipe';
 })
 export class RecipesComponent implements OnInit {
 
-    @Input() userRecipes$: Observable<IRecipe[]>;
+    @Input() userRecipes$: Observable<IRecipe[]> = {} as Observable<IRecipe[]>;
     @Output() selectedRecipeEvent: EventEmitter<IRecipe> = new EventEmitter<IRecipe>();
     @Output() recipesToDeleteEvent: EventEmitter<IRecipe[]> = new EventEmitter<IRecipe[]>();
 
@@ -24,7 +24,7 @@ export class RecipesComponent implements OnInit {
         this.selectedRecipeEvent.emit(userRecipe);
     }
 
-    updateCheckedRecipes(event, userRecipe: IRecipe) {
+    updateCheckedRecipes(event: any, userRecipe: IRecipe) {
         if (event.checked) {
             this.recipesToDelete.push(userRecipe);
         } else {
@@ -42,5 +42,4 @@ export class RecipesComponent implements OnInit {
     addNewRecipe() {
 
     }
-
 }

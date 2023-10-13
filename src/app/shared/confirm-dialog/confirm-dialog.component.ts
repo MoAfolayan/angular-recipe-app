@@ -5,14 +5,9 @@ import { DialogData } from '../dialog-data';
 @Component({
     selector: 'app-confirm-dialog',
     templateUrl: './confirm-dialog.component.html',
-    styleUrls: ['./confirm-dialog.component.sass']
+    styleUrls: ['./confirm-dialog.component.css']
 })
-
 export class ConfirmDialogComponent implements OnInit {
-
-    title: string;
-    message: string;
-    displayButtons: boolean;
 
     constructor(
         public dialogRef: MatDialogRef<ConfirmDialogComponent>,

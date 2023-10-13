@@ -1,0 +1,10 @@
+{
+    "domain": "mo-recipe-app.us.auth0.com",
+    "clientId": "4IMunc5Fs8WeWEPybR9wBEJZJYYEAO2j",
+    "authorizationParams": {
+        "audience": "https://localhost:5001/api/"
+    },
+    "apiUri": "http://localhost:5000/api",
+    "appUri": "http://localhost:4200",
+    "errorPath": "/error"
+}

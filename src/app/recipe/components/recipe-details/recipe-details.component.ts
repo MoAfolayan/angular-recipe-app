@@ -8,7 +8,7 @@ import { IRecipe } from '../../recipe';
 })
 export class RecipeDetailsComponent implements OnInit {
 
-    @Input() selectedRecipe: IRecipe = null;
+    @Input() selectedRecipe: IRecipe = {} as IRecipe;
     @Output() editEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() deleteEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -24,5 +24,4 @@ export class RecipeDetailsComponent implements OnInit {
     deleteRecipe() {
         this.deleteEvent.emit(true);
     }
-
 }

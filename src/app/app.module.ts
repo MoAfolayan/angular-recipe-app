@@ -63,30 +63,11 @@ const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath }
                 redirect_uri: window.location.origin,
             },
 
-            // The AuthHttpInterceptor configuration
             httpInterceptor: {
                 allowedList: [
-
                     {
                         uri: 'https://localhost:5001/api/*',
                     },
-
-                    // Match anything starting with /api/accounts, but also specify the audience and scope the attached
-                    // access token must have
-                    {
-                        uri: '/api/accounts/*',
-                    },
-
-                    // Matching on HTTP method
-                    {
-                        uri: '/api/orders',
-                        httpMethod: 'post',
-                    },
-
-                    // Using an absolute URI
-                    {
-                        uri: 'https://your-domain.auth0.com/api/v2/users',
-                    }
                 ]
             }
         })

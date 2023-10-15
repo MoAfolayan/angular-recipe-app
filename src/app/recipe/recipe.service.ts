@@ -8,7 +8,7 @@ import { IRecipe } from './recipe';
 })
 export class RecipeService {
 
-    private recipeUrl: string = 'http://localhost:5000/api/recipes';
+    private recipeUrl: string = 'https://localhost:5001/api/recipes';
 
     constructor(private http: HttpClient) { }
 

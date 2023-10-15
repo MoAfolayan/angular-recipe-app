@@ -4,7 +4,7 @@
     "authorizationParams": {
         "audience": "https://localhost:5001/api/"
     },
-    "apiUri": "http://localhost:5000/api",
+    "apiUri": "https://localhost:5001/api",
     "appUri": "http://localhost:4200",
     "errorPath": "/error"
 }

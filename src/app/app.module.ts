@@ -27,7 +27,7 @@ const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath }
     domain: string;
     clientId: string;
     authorizationParams: {
-        audience?: string;
+        audience: string;
     },
     apiUri: string;
     errorPath: string;
@@ -59,7 +59,7 @@ const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath }
             domain: domain,
             clientId: clientId,
             authorizationParams: {
-                ...(audience && audience !== 'https://localhost:5001/api/' ? { audience } : null),
+                ...{ audience },
                 redirect_uri: window.location.origin,
             },
 
@@ -68,7 +68,7 @@ const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath }
                 allowedList: [
 
                     {
-                        uri: 'http://localhost:5000/api/*',
+                        uri: 'https://localhost:5001/api/*',
                     },
 
                     // Match anything starting with /api/accounts, but also specify the audience and scope the attached

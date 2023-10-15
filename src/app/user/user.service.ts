@@ -8,7 +8,7 @@ import { IUser } from './user';
 })
 export class UserService {
 
-    private usersUrl: string = 'http://localhost:5000/api/user';
+    private usersUrl: string = 'https://localhost:5001/api/user';
 
     constructor(private http: HttpClient) { }
 

@@ -11,9 +11,11 @@ export class RecipesComponent implements OnInit {
 
     @Input() userRecipes$: Observable<IRecipe[]> = {} as Observable<IRecipe[]>;
     @Output() selectedRecipeEvent: EventEmitter<IRecipe> = new EventEmitter<IRecipe>();
-    @Output() recipesToDeleteEvent: EventEmitter<IRecipe[]> = new EventEmitter<IRecipe[]>();
+    @Output() addRecipeEvent: EventEmitter<IRecipe> = new EventEmitter<IRecipe>();
+    @Output() editRecipeEvent: EventEmitter<IRecipe> = new EventEmitter<IRecipe>();
+    @Output() deleteRecipesEvent: EventEmitter<IRecipe[]> = new EventEmitter<IRecipe[]>();
 
-    recipesToDelete: IRecipe[] = [];
+    checkedRecipes: IRecipe[] = [];
 
     constructor() { }
 
@@ -26,20 +28,24 @@ export class RecipesComponent implements OnInit {
 
     updateCheckedRecipes(event: any, userRecipe: IRecipe) {
         if (event.checked) {
-            this.recipesToDelete.push(userRecipe);
+            this.checkedRecipes.push(userRecipe);
         } else {
-            let index = this.recipesToDelete.findIndex(x => x.id == userRecipe.id);
+            let index = this.checkedRecipes.findIndex(x => x.id == userRecipe.id);
             if (index != -1) {
-                this.recipesToDelete.splice(index, 1);
+                this.checkedRecipes.splice(index, 1);
             }
         }
     }
 
-    deleteSelectedRecipes() {
-        this.recipesToDeleteEvent.emit(this.recipesToDelete);
+    addRecipe(recipe: IRecipe) {
+        this.addRecipeEvent.emit(recipe);
     }
 
-    addNewRecipe() {
+    editRecipe(recipe: IRecipe) {
+        this.editRecipeEvent.emit(recipe);
+    }
 
+    deleteRecipes() {
+        this.deleteRecipesEvent.emit(this.checkedRecipes);
     }
 }

@@ -18,35 +18,27 @@ export class RecipeService {
         return this.http.get<IRecipe[]>(`${this.recipeUrl}/userid/${id}`);
     }
 
-    addRecipe(recipe: IRecipe): Observable<any> {
-        return this.http.post(`${this.recipeUrl}`, recipe);
+    addRecipes(recipes: IRecipe[]): Observable<any> {
+        return this.http.post(`${this.recipeUrl}`, recipes);
     }
 
-    editRecipe(recipe: IRecipe): Observable<any> {
-        return this.http.put(`${this.recipeUrl}`, recipe);
-    }
-
-    deleteRecipe(recipe: IRecipe): Observable<any> {
-        return this.http.post(`${this.recipeUrl}/delete`, recipe);
+    editRecipes(recipes: IRecipe[]): Observable<any> {
+        return this.http.put(`${this.recipeUrl}`, recipes);
     }
 
     deleteRecipes(recipes: IRecipe[]): Observable<any> {
-        return this.http.post(`${this.recipeUrl}/delete-multiple`, recipes);
+        return this.http.post(`${this.recipeUrl}/delete`, recipes);
     }
 
-    addIngredient(ingredient: IIngredient): Observable<any> {
-        return this.http.post(`${this.ingredientUrl}`, ingredient);
+    addIngredients(ingredients: IIngredient): Observable<any> {
+        return this.http.post(`${this.ingredientUrl}`, ingredients);
     }
 
-    editIngredient(ingredient: IIngredient): Observable<any> {
-        return this.http.put(`${this.ingredientUrl}`, ingredient);
+    editIngredients(ingredients: IIngredient): Observable<any> {
+        return this.http.put(`${this.ingredientUrl}`, ingredients);
     }
 
-    deleteIngredient(ingredient: IIngredient): Observable<any> {
-        return this.http.post(`${this.ingredientUrl}/delete`, ingredient);
-    }
-
-    deleteIngredients(ingredient: IIngredient): Observable<any> {
-        return this.http.post(`${this.ingredientUrl}/delete-multiple`, ingredient);
+    deleteIngredients(ingredients: IIngredient): Observable<any> {
+        return this.http.post(`${this.ingredientUrl}/delete`, ingredients);
     }
 }

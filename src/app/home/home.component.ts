@@ -84,7 +84,9 @@ export class HomeComponent implements OnInit {
             dialogRef.afterClosed().subscribe(dialogResult => {
                 console.log(dialogResult);
                 if (dialogResult) {
-                    this.recipeService.deleteRecipe(this.selectedRecipe)
+                    let recipes: IRecipe[] = [];
+                    recipes.push(this.selectedRecipe);
+                    this.recipeService.deleteRecipes(recipes)
                         .subscribe();
                 }
             });

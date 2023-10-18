@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
     login(): void {
         this.auth.loginWithPopup()
             .pipe(
-                tap(console.log)
-            )
+            // tap(console.log)
+        )
             .subscribe(
                 () => {
                     console.log('success logging in');

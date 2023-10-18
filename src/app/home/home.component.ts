@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     user: IUser = {} as IUser;
     selectedRecipe: IRecipe = {} as IRecipe;
     recipesToDelete: IRecipe[] = [];
+    checkedRecipes: IRecipe[] = [];
 
     constructor(
         public auth0Service: AuthService,
@@ -61,6 +62,17 @@ export class HomeComponent implements OnInit {
         this.selectedRecipe = event;
     }
 
+    updateCheckedRecipes(event: any) {
+        if (event.checked) {
+            this.checkedRecipes.push(event.recipe);
+        } else {
+            let index = this.checkedRecipes.findIndex(x => x.id == event.recipe.id);
+            if (index != -1) {
+                this.checkedRecipes.splice(index, 1);
+            }
+        }
+    }
+
     addRecipe(): void {
         const dialogRef = this.dialog.open(AddRecipeDialogComponent, {
             maxWidth: "500px",
@@ -76,7 +88,6 @@ export class HomeComponent implements OnInit {
                 let recipe: IRecipe = { id: 0, name: dialogResult.name, ingredients: null, userId: this.user.id }
                 let recipes: IRecipe[] = [];
                 recipes.push(recipe);
-                console.log('recipe', recipe, 'recipes', recipes);
                 this.recipeService.addRecipes(recipes).subscribe();
             }
         });
@@ -87,9 +98,8 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    deleteRecipes(event: any): void {
-        console.log('event', event);
-        if (event.length < 1) {
+    deleteRecipes(): void {
+        if (this.checkedRecipes.length < 1) {
             this.dialog.open(ConfirmDialogComponent, {
                 maxWidth: "500px",
                 data: {
@@ -109,9 +119,8 @@ export class HomeComponent implements OnInit {
             });
 
             dialogRef.afterClosed().subscribe(dialogResult => {
-                console.log(dialogResult);
                 if (dialogResult) {
-                    this.recipeService.deleteRecipes(event)
+                    this.recipeService.deleteRecipes(this.checkedRecipes)
                         .subscribe();
                 }
             });

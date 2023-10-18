@@ -11,7 +11,6 @@ export class RecipeDetailsComponent implements OnInit {
 
     @Input() selectedRecipe: IRecipe = {} as IRecipe;
     @Output() editIngredientEvent: EventEmitter<IIngredient> = new EventEmitter<IIngredient>();
-    @Output() deleteIngredientsEvent: EventEmitter<IIngredient[]> = new EventEmitter<IIngredient[]>();
 
     constructor() { }
 
@@ -20,9 +19,5 @@ export class RecipeDetailsComponent implements OnInit {
 
     editIngredient(ingredient: IIngredient) {
         this.editIngredientEvent.emit(ingredient);
-    }
-
-    deleteIngredients() {
-        this.deleteIngredientsEvent.emit();
     }
 }

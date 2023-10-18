@@ -13,23 +13,33 @@
     </mat-toolbar>
 </p>
 
-<div class="css-grid-container">
-    <div>
-        <app-recipes [userRecipes$]="userRecipes$" (selectedRecipeEvent)="displaySelectedRecipe($event)"
-            (editRecipeEvent)="editRecipe($event)" (deleteRecipesEvent)="deleteRecipes($event)">
-        </app-recipes>
+<div class="grid">
+    <div class="recipes">
+        <h4>
+            Recipes
+        </h4>
         <button mat-stroked-button color="accent" (click)="addRecipe()">
-            New
             <i class="material-icons md-48">add</i>
         </button>
+        <button mat-stroked-button color="accent" (click)="deleteRecipes()">
+            <i class="material-icons md-48">delete</i>
+        </button>
+        <app-recipes [userRecipes$]="userRecipes$" (selectedRecipeEvent)="displaySelectedRecipe($event)"
+            (editRecipeEvent)="editRecipe($event)" (updateCheckedRecipesEvent)="updateCheckedRecipes($event)">
+        </app-recipes>
     </div>
-    <div>
+    <div class="recipe-details">
+        <h4>
+            Ingredients
+        </h4>
+        <button mat-stroked-button color="accent">
+            <i class="material-icons md-48">add</i>
+        </button>
+        <button mat-stroked-button color="accent">
+            <i class="material-icons md-48">delete</i>
+        </button>
         <app-recipe-details [selectedRecipe]="selectedRecipe" (editIngredientEvent)="editIngredient($event)"
             (deleteIngredientEvent)="deleteIngredients($event)" (deleteIngredientsEvent)="deleteIngredients($event)">
         </app-recipe-details>
-        <button mat-stroked-button color="accent">
-            New
-            <i class="material-icons md-48">add</i>
-        </button>
     </div>
 </div>

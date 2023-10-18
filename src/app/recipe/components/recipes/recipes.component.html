@@ -1,27 +1,19 @@
-<mat-card class="card">
-    <div *ngIf="userRecipes$ | async">
-        <mat-card-subtitle>
-            Recipes
-        </mat-card-subtitle>
+<div *ngIf="userRecipes$ | async">
+    <mat-card class="card" *ngFor="let userRecipe of (userRecipes$ | async); index as i"
+        (click)="viewRecipeDetails(userRecipe)">
         <mat-card-content>
-            <mat-selection-list #matRecipeList [multiple]="false">
-                <mat-list-option *ngFor="let userRecipe of (userRecipes$ | async); index as i" [value]="userRecipe.name"
-                    (click)="viewRecipeDetails(userRecipe)">
+            <div class="grid">
+                <div class="card-main">
                     <mat-checkbox (change)="updateCheckedRecipes($event, userRecipe)">
                         {{ userRecipe.name }}
                     </mat-checkbox>
-                </mat-list-option>
-            </mat-selection-list>
+                </div>
+                <div class="buttons">
+                    <button mat-stroked-button color="accent" (click)="editRecipe(userRecipe)">
+                        <i class="material-icons md-48">edit</i>
+                    </button>
+                </div>
+            </div>
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-stroked-button color="accent" (click)="deleteSelectedRecipes()">
-                <i class="material-icons md-48">delete</i>
-                Delete Selected Recipes
-            </button>
-            <button mat-stroked-button color="accent" (click)="addNewRecipe()">
-                <i class="material-icons md-48">add</i>
-                Add New Recipe
-            </button>
-        </mat-card-actions>
-    </div>
-</mat-card>
+    </mat-card>
+</div>

@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IRecipe } from './recipe';
+import { IIngredient } from './ingredient';
 
 @Injectable({
     providedIn: 'root'
 })
 export class RecipeService {
 
-    private recipeUrl: string = 'https://localhost:5001/api/recipes';
+    private recipeUrl: string = 'https://localhost:5001/api/recipe';
+    private ingredientUrl: string = 'https://localhost:5001/api/ingredient';
 
     constructor(private http: HttpClient) { }
 
@@ -16,11 +18,27 @@ export class RecipeService {
         return this.http.get<IRecipe[]>(`${this.recipeUrl}/userid/${id}`);
     }
 
-    deleteRecipes(recipesToDelete: IRecipe[]): Observable<any> {
-        return this.http.post(`${this.recipeUrl}/delete-multiple`, recipesToDelete);
+    addRecipes(recipes: IRecipe[]): Observable<any> {
+        return this.http.post(`${this.recipeUrl}`, recipes);
     }
 
-    deleteRecipe(recipeToDelete: IRecipe): Observable<any> {
-        return this.http.post(`${this.recipeUrl}/delete`, recipeToDelete);
+    editRecipes(recipes: IRecipe[]): Observable<any> {
+        return this.http.put(`${this.recipeUrl}`, recipes);
+    }
+
+    deleteRecipes(recipes: IRecipe[]): Observable<any> {
+        return this.http.post(`${this.recipeUrl}/delete`, recipes);
+    }
+
+    addIngredients(ingredients: IIngredient): Observable<any> {
+        return this.http.post(`${this.ingredientUrl}`, ingredients);
+    }
+
+    editIngredients(ingredients: IIngredient): Observable<any> {
+        return this.http.put(`${this.ingredientUrl}`, ingredients);
+    }
+
+    deleteIngredients(ingredients: IIngredient): Observable<any> {
+        return this.http.post(`${this.ingredientUrl}/delete`, ingredients);
     }
 }

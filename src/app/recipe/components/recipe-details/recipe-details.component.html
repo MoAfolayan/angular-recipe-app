@@ -1,27 +1,18 @@
-<mat-card class="card">
-    <mat-card-subtitle>
-        Ingredients
-    </mat-card-subtitle>
-    <div *ngIf="selectedRecipe">
-        <mat-card-title>
-            {{ selectedRecipe.name }}
-        </mat-card-title>
+<div *ngIf="selectedRecipe">
+    <mat-card class="card" *ngFor="let ingredient of selectedRecipe.ingredients; index as i">
         <mat-card-content>
-            <ul>
-                <li *ngFor="let ingredients of selectedRecipe.ingredients; index as i">
-                    {{ ingredients.name }}
-                </li>
-            </ul>
+            <div class="grid">
+                <div class="card-main">
+                    <mat-checkbox>
+                        {{ ingredient.name }}
+                    </mat-checkbox>
+                </div>
+                <div class="buttons">
+                    <button mat-stroked-button color="accent" (click)="editIngredient(ingredient)">
+                        <i class="material-icons md-48">edit</i>
+                    </button>
+                </div>
+            </div>
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-stroked-button color="accent" (click)="editRecipe()">
-                <i class="material-icons md-48">edit</i>
-                Edit
-            </button>
-            <button mat-stroked-button color="accent" (click)="deleteRecipe()">
-                <i class="material-icons md-48">delete</i>
-                Delete
-            </button>
-        </mat-card-actions>
-    </div>
-</mat-card>
+    </mat-card>
+</div>

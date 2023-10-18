@@ -1,5 +1,6 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { IRecipe } from '../../recipe';
+import { IIngredient } from '../../ingredient';
 
 @Component({
     selector: 'app-recipe-details',
@@ -9,19 +10,14 @@ import { IRecipe } from '../../recipe';
 export class RecipeDetailsComponent implements OnInit {
 
     @Input() selectedRecipe: IRecipe = {} as IRecipe;
-    @Output() editEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
-    @Output() deleteEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() editIngredientEvent: EventEmitter<IIngredient> = new EventEmitter<IIngredient>();
 
     constructor() { }
 
     ngOnInit(): void {
     }
 
-    editRecipe() {
-        this.editEvent.emit(true);
-    }
-
-    deleteRecipe() {
-        this.deleteEvent.emit(true);
+    editIngredient(ingredient: IIngredient) {
+        this.editIngredientEvent.emit(ingredient);
     }
 }

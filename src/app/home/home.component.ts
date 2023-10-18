@@ -10,6 +10,7 @@ import { UserService } from '../user/user.service';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
+import { AddRecipeDialogComponent } from '../shared/add-recipe-dialog/add-recipe-dialog.component';
 
 @Component({
     selector: 'app-home',
@@ -18,10 +19,11 @@ import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.
 })
 export class HomeComponent implements OnInit {
 
-    user$: Observable<IUser> = {} as Observable<IUser>;
     userRecipes$: Observable<IRecipe[]> = {} as Observable<IRecipe[]>;
+    user: IUser = {} as IUser;
     selectedRecipe: IRecipe = {} as IRecipe;
     recipesToDelete: IRecipe[] = [];
+    checkedRecipes: IRecipe[] = [];
 
     constructor(
         public auth0Service: AuthService,
@@ -45,10 +47,9 @@ export class HomeComponent implements OnInit {
         return this.userService.getUser()
             .pipe(
                 // tap(console.log),
-                tap((user: IUser) => this.user$ = of(user)),
+                tap((user: IUser) => this.user = user),
                 mergeMap((user: IUser) => {
                     if (user.id) {
-                        console.log(`user id: `, user.id)
                         return this.recipeService.getUserRecipes(user.id);
                     } else {
                         return null;
@@ -61,12 +62,46 @@ export class HomeComponent implements OnInit {
         this.selectedRecipe = event;
     }
 
-    deleteRecipes(event: any): void {
-        console.log(`delete multiple recipes: `, event);
+    updateCheckedRecipes(event: any) {
+        if (event.checked) {
+            this.checkedRecipes.push(event.recipe);
+        } else {
+            let index = this.checkedRecipes.findIndex(x => x.id == event.recipe.id);
+            if (index != -1) {
+                this.checkedRecipes.splice(index, 1);
+            }
+        }
+    }
 
-        if (event.length < 1) {
-            const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-                maxWidth: "400px",
+    addRecipe(): void {
+        const dialogRef = this.dialog.open(AddRecipeDialogComponent, {
+            maxWidth: "500px",
+            data: {
+                title: "Add new recipe",
+                recipe: {},
+                displayButtons: true,
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(dialogResult => {
+            if (dialogResult) {
+                let recipe: IRecipe = { id: 0, name: dialogResult.name, ingredients: null, userId: this.user.id }
+                let recipes: IRecipe[] = [];
+                recipes.push(recipe);
+                this.recipeService.addRecipes(recipes).subscribe();
+            }
+        });
+    }
+
+    editRecipe(event: any): void {
+        if (event) {
+        }
+    }
+
+    deleteRecipes(): void {
+        if (this.checkedRecipes.length < 1) {
+            this.dialog.open(ConfirmDialogComponent, {
+                maxWidth: "500px",
                 data: {
                     title: "No recipes selected",
                     message: "You have to select recipes in order to delete them",
@@ -75,7 +110,7 @@ export class HomeComponent implements OnInit {
             });
         } else {
             const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-                maxWidth: "400px",
+                maxWidth: "500px",
                 data: {
                     title: "Are you sure?",
                     message: "You are about to delete these recipes",
@@ -84,41 +119,26 @@ export class HomeComponent implements OnInit {
             });
 
             dialogRef.afterClosed().subscribe(dialogResult => {
-                console.log(dialogResult);
                 if (dialogResult) {
-                    this.recipeService.deleteRecipes(event)
+                    this.recipeService.deleteRecipes(this.checkedRecipes)
                         .subscribe();
                 }
             });
         }
     }
 
-    editRecipe(event: any): void {
+    addIngredient(event: any): void {
         if (event) {
-            // edit selectedRecipe
         }
     }
 
-    deleteRecipe(event: any): void {
-        console.log(`deleting recipe: `, event);
-
+    editIngredient(event: any): void {
         if (event) {
-            const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-                maxWidth: "400px",
-                data: {
-                    title: "Are you sure?",
-                    message: "You are about to delete this recipe",
-                    displayButtons: true
-                }
-            });
+        }
+    }
 
-            dialogRef.afterClosed().subscribe(dialogResult => {
-                console.log(dialogResult);
-                if (dialogResult) {
-                    this.recipeService.deleteRecipe(this.selectedRecipe)
-                        .subscribe();
-                }
-            });
+    deleteIngredients(event: any): void {
+        if (event) {
         }
     }
 

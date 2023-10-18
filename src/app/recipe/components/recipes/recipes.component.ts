@@ -11,7 +11,6 @@ export class RecipesComponent implements OnInit {
 
     @Input() userRecipes$: Observable<IRecipe[]> = {} as Observable<IRecipe[]>;
     @Output() selectedRecipeEvent: EventEmitter<IRecipe> = new EventEmitter<IRecipe>();
-    @Output() addRecipeEvent: EventEmitter<IRecipe> = new EventEmitter<IRecipe>();
     @Output() editRecipeEvent: EventEmitter<IRecipe> = new EventEmitter<IRecipe>();
     @Output() deleteRecipesEvent: EventEmitter<IRecipe[]> = new EventEmitter<IRecipe[]>();
 
@@ -35,10 +34,6 @@ export class RecipesComponent implements OnInit {
                 this.checkedRecipes.splice(index, 1);
             }
         }
-    }
-
-    addRecipe(recipe: IRecipe) {
-        this.addRecipeEvent.emit(recipe);
     }
 
     editRecipe(recipe: IRecipe) {

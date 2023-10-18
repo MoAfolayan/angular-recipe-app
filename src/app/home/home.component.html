@@ -16,9 +16,12 @@
 <div class="css-grid-container">
     <div>
         <app-recipes [userRecipes$]="userRecipes$" (selectedRecipeEvent)="displaySelectedRecipe($event)"
-            (addRecipeEvent)="addRecipe()" (editRecipeEvent)="editRecipe($event)"
-            (deleteRecipesEvent)="deleteRecipes($event)">
+            (editRecipeEvent)="editRecipe($event)" (deleteRecipesEvent)="deleteRecipes($event)">
         </app-recipes>
+        <button mat-stroked-button color="accent" (click)="addRecipe()">
+            New
+            <i class="material-icons md-48">add</i>
+        </button>
     </div>
     <div>
         <app-recipe-details [selectedRecipe]="selectedRecipe" (addIngredientEvent)="addIngredient($event)"

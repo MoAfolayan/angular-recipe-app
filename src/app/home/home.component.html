@@ -16,13 +16,13 @@
 <div class="css-grid-container">
     <div>
         <app-recipes [userRecipes$]="userRecipes$" (selectedRecipeEvent)="displaySelectedRecipe($event)"
-            (addRecipeEvent)="addRecipe($event)" (editRecipeEvent)="editRecipe($event)"
+            (addRecipeEvent)="addRecipe()" (editRecipeEvent)="editRecipe($event)"
             (deleteRecipesEvent)="deleteRecipes($event)">
         </app-recipes>
     </div>
     <div>
         <app-recipe-details [selectedRecipe]="selectedRecipe" (addIngredientEvent)="addIngredient($event)"
-            (editIngredientEvent)="editIngredient($event)" (deleteIngredientEvent)="deleteIngredient($event)"
+            (editIngredientEvent)="editIngredient($event)" (deleteIngredientEvent)="deleteIngredients($event)"
             (deleteIngredientsEvent)="deleteIngredients($event)">
         </app-recipe-details>
     </div>

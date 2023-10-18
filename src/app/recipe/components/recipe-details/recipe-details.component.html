@@ -4,7 +4,7 @@
 <div *ngIf="selectedRecipe">
     <mat-card class="card" *ngFor="let ingredient of selectedRecipe.ingredients; index as i">
         <mat-card-content>
-            <mat-checkbox (change)="updateCheckedIngredients($event, ingredient)">
+            <mat-checkbox>
                 {{ ingredient.name }}
             </mat-checkbox>
         </mat-card-content>

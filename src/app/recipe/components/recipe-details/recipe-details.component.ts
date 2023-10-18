@@ -15,23 +15,23 @@ export class RecipeDetailsComponent implements OnInit {
     @Output() deleteIngredientEvent: EventEmitter<IIngredient> = new EventEmitter<IIngredient>();
     @Output() deleteIngredientsEvent: EventEmitter<IIngredient[]> = new EventEmitter<IIngredient[]>();
 
-    checkedIngredients: IIngredient[] = [];
+    // checkedIngredients: IIngredient[] = [];
 
     constructor() { }
 
     ngOnInit(): void {
     }
 
-    updateCheckedIngredients(event: any, ingredient: IIngredient) {
-        if (event.checked) {
-            this.checkedIngredients.push(ingredient);
-        } else {
-            let index = this.checkedIngredients.findIndex(x => x.id == ingredient.id);
-            if (index != -1) {
-                this.checkedIngredients.splice(index, 1);
-            }
-        }
-    }
+    // updateCheckedIngredients(event: any, ingredient: IIngredient) {
+    //     if (event.checked) {
+    //         this.checkedIngredients.push(ingredient);
+    //     } else {
+    //         let index = this.checkedIngredients.findIndex(x => x.id == ingredient.id);
+    //         if (index != -1) {
+    //             this.checkedIngredients.splice(index, 1);
+    //         }
+    //     }
+    // }
 
     addIngredient() {
         this.addIngredientEvent.emit(true);

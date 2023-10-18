@@ -10,6 +10,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
@@ -21,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { RecipesComponent } from './recipe/components/recipes/recipes.component';
 import { RecipeDetailsComponent } from './recipe/components/recipe-details/recipe-details.component';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { AddRecipeDialogComponent } from './shared/add-recipe-dialog/add-recipe-dialog.component';
 import * as config from './auth_config.json';
 
 const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath } = config as {
@@ -40,7 +44,8 @@ const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath }
         LoginComponent,
         RecipesComponent,
         RecipeDetailsComponent,
-        ConfirmDialogComponent
+        ConfirmDialogComponent,
+        AddRecipeDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -55,6 +60,9 @@ const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath }
         MatListModule,
         MatCheckboxModule,
         MatDialogModule,
+        MatInputModule,
+        MatFormFieldModule,
+        FormsModule,
         AuthModule.forRoot({
             domain: domain,
             clientId: clientId,

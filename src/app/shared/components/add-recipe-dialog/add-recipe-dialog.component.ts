@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
-import { DialogData } from '../dialog-data';
+import { DialogData } from '../../models/dialog-data';
 
 @Component({
     selector: 'app-add-recipe-dialog',

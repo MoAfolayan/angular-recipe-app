@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IRecipe } from '../../recipe';
+import { IRecipe } from '../../shared/models/recipe';
 
 interface ICheckedRecipe {
     checked: boolean;

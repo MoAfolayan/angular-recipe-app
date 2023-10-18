@@ -1,4 +1,4 @@
-import { IRecipe } from "../recipe/recipe";
+import { IRecipe } from "./recipe";
 
 export interface DialogData {
     title: string;

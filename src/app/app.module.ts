@@ -19,12 +19,12 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RecipesComponent } from './recipe/components/recipes/recipes.component';
-import { RecipeDetailsComponent } from './recipe/components/recipe-details/recipe-details.component';
-import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
-import { AddRecipeDialogComponent } from './shared/add-recipe-dialog/add-recipe-dialog.component';
+import { HomeComponent } from './core/home/home.component';
+import { LoginComponent } from './core/login/login.component';
+import { RecipesComponent } from './core/recipes/recipes.component';
+import { RecipeDetailsComponent } from './core/recipe-details/recipe-details.component';
+import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
+import { AddRecipeDialogComponent } from './shared/components/add-recipe-dialog/add-recipe-dialog.component';
 import * as config from './auth_config.json';
 
 const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath } = config as {

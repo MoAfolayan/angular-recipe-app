@@ -1,4 +1,4 @@
-<p *ngIf="auth0Service.user$ | async as auth0user">
+<div *ngIf="auth0Service.user$ | async as auth0user">
     <mat-toolbar color="primary">
         <span>
             Hello {{ auth0user.name }}
@@ -10,7 +10,7 @@
             Log out
         </button>
     </mat-toolbar>
-</p>
+</div>
 
 <div class="grid">
     <div class="recipes">

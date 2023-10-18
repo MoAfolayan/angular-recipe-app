@@ -3,14 +3,14 @@ import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Observable, of } from 'rxjs';
 import { mergeMap, tap } from 'rxjs/operators';
-import { IRecipe } from '../recipe/recipe';
-import { RecipeService } from '../recipe/recipe.service';
-import { IUser } from '../user/user';
-import { UserService } from '../user/user.service';
+import { IRecipe } from '../../shared/models/recipe';
+import { RecipeService } from '../../shared/services/recipe/recipe.service';
+import { IUser } from '../../shared/models/user';
+import { UserService } from '../../shared/services/user/user.service';
 
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../shared/confirm-dialog/confirm-dialog.component';
-import { AddRecipeDialogComponent } from '../shared/add-recipe-dialog/add-recipe-dialog.component';
+import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
+import { AddRecipeDialogComponent } from '../../shared/components/add-recipe-dialog/add-recipe-dialog.component';
 
 @Component({
     selector: 'app-home',

@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IRecipe } from './recipe';
-import { IIngredient } from './ingredient';
+import { IRecipe } from '../../models/recipe';
+import { IIngredient } from '../../models/ingredient';
 
 @Injectable({
     providedIn: 'root'

@@ -3,7 +3,6 @@
         <span>
             Hello {{ auth0user.name }}
         </span>
-        <span class="spacer"></span>
         <button mat-stroked-button (click)="logout()">
             <mat-icon>
                 flight_takeoff
@@ -15,9 +14,9 @@
 
 <div class="grid">
     <div class="recipes">
-        <h4>
+        <h2>
             Recipes
-        </h4>
+        </h2>
         <button mat-stroked-button color="accent" (click)="addRecipe()">
             <i class="material-icons md-48">add</i>
         </button>
@@ -29,9 +28,9 @@
         </app-recipes>
     </div>
     <div class="recipe-details">
-        <h4>
+        <h2>
             Ingredients
-        </h4>
+        </h2>
         <button mat-stroked-button color="accent">
             <i class="material-icons md-48">add</i>
         </button>

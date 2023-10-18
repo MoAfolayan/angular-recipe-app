@@ -3,6 +3,8 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     grid-auto-rows: minmax(75px, auto);
+    padding: 1%;
+    margin: 1%;
 }
 
 .recipes {
@@ -11,8 +13,4 @@
 
 .recipe-details {
     grid-column: 2 / 3;
-}
-
-.spacer {
-    flex: 1 1 auto;
 }

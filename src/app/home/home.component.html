@@ -24,9 +24,12 @@
         </button>
     </div>
     <div>
-        <app-recipe-details [selectedRecipe]="selectedRecipe" (addIngredientEvent)="addIngredient($event)"
-            (editIngredientEvent)="editIngredient($event)" (deleteIngredientEvent)="deleteIngredients($event)"
-            (deleteIngredientsEvent)="deleteIngredients($event)">
+        <app-recipe-details [selectedRecipe]="selectedRecipe" (editIngredientEvent)="editIngredient($event)"
+            (deleteIngredientEvent)="deleteIngredients($event)" (deleteIngredientsEvent)="deleteIngredients($event)">
         </app-recipe-details>
+        <button mat-stroked-button color="accent">
+            New
+            <i class="material-icons md-48">add</i>
+        </button>
     </div>
 </div>

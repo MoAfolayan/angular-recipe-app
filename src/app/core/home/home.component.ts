@@ -11,11 +11,19 @@ import { UserService } from '../../shared/services/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 import { AddRecipeDialogComponent } from '../../shared/components/add-recipe-dialog/add-recipe-dialog.component';
+import { RecipeDetailsComponent } from '../recipe-details/recipe-details.component';
+import { RecipesComponent } from '../recipes/recipes.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    styleUrls: ['./home.component.css'],
+    standalone: true,
+    imports: [NgIf, MatToolbarModule, MatButtonModule, MatIconModule, RecipesComponent, RecipeDetailsComponent, AsyncPipe]
 })
 export class HomeComponent implements OnInit {
 

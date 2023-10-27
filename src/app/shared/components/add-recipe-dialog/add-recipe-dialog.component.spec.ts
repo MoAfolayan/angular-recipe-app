@@ -8,8 +8,8 @@ describe('AddRecipeDialogComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AddRecipeDialogComponent]
-    });
+    imports: [AddRecipeDialogComponent]
+});
     fixture = TestBed.createComponent(AddRecipeDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
